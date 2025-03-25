@@ -136,6 +136,19 @@ cat <<EOT > ~/install_node_exporter.yml
         name: node_exporter
         enabled: yes
         state: started
+        
+    - name: Allow Node Exporter port 9100 in UFW
+      community.general.ufw:
+        rule: allow
+        port: "9100"
+        proto: tcp
+
+    - name: Reload UFW
+      command: ufw reload
+
+    - name: Set Hostname
+      hostname:
+        name: "{{ inventory_hostname }}"
 EOT
 
 echo "Installation complete!"
