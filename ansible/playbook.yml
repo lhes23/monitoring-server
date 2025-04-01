@@ -1,0 +1,7 @@
+- name: Configure EC2 Instance
+  hosts: all
+  become: yes
+  roles:
+    - update
+    - swap
+    - node_exporter

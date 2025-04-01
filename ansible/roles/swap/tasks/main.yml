@@ -1,0 +1,28 @@
+- name: Check if swap is enabled
+  command: swapon --show
+  register: swap_status
+  changed_when: false
+  failed_when: false
+
+- name: Create a 4GB swap file if missing
+  command: fallocate -l 4G /swapfile
+  when: swap_status.stdout == ""
+
+- name: Set correct permissions
+  file:
+    path: /swapfile
+    mode: '0600'
+
+- name: Format the swap file
+  command: mkswap /swapfile
+  when: swap_status.stdout == ""
+
+- name: Enable swap
+  command: swapon /swapfile
+  when: swap_status.stdout == ""
+
+- name: Persist swap in /etc/fstab
+  lineinfile:
+    path: /etc/fstab
+    line: '/swapfile none swap sw 0 0'
+    state: present

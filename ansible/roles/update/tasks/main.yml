@@ -1,0 +1,7 @@
+- name: Update system packages
+    apt:
+      update_cache: yes
+
+- name: Set Hostname
+    hostname:
+      name: "{{ inventory_hostname }}"

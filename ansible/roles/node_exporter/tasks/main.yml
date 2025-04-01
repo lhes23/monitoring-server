@@ -1,0 +1,60 @@
+- name: Create a node_exporter user
+    user:
+      name: node_exporter
+      shell: /usr/sbin/nologin
+      system: yes
+      create_home: no
+
+- name: Download Node Exporter
+    get_url:
+      url: "https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz"
+      dest: "/tmp/node_exporter.tar.gz"
+
+- name: Extract Node Exporter
+    unarchive:
+      src: "/tmp/node_exporter.tar.gz"
+      dest: "/usr/local/bin/"
+      remote_src: yes
+      extra_opts: [--strip-components=1]
+
+- name: Set permissions for Node Exporter
+    file:
+      path: "/usr/local/bin/node_exporter"
+      owner: node_exporter
+      group: node_exporter
+      mode: '0755'
+
+- name: Create Node Exporter service file
+    copy:
+      dest: "/etc/systemd/system/node_exporter.service"
+      content: |
+        [Unit]
+        Description=Node Exporter
+        After=network.target
+
+        [Service]
+        User=node_exporter
+        ExecStart=/usr/local/bin/node_exporter
+        Restart=always
+
+        [Install]
+        WantedBy=multi-user.target
+
+- name: Reload systemd daemon
+    systemd:
+      daemon_reload: yes
+
+- name: Enable and start Node Exporter
+    systemd:
+      name: node_exporter
+      enabled: yes
+      state: started
+
+- name: Allow Node Exporter port 9100 in UFW
+    community.general.ufw:
+      rule: allow
+      port: "9100"
+      proto: tcp
+
+- name: Reload UFW
+    command: ufw reload
