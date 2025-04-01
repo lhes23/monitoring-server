@@ -4,22 +4,11 @@ global:
 scrape_configs:
   - job_name: 'node_exporter'
     static_configs:
-      - targets: ['rankzilla.com:9100']
-      - targets: ['simplemom.net:9100']
-      - targets: ['sundaybestdesigns.com:9100']
-      - targets: ['webalivedesigns.com:9100']
-      - targets: ['socialcrawlytics.com:9100']
-      - targets: ['webmarketing123.com:9100']
-      - targets: ['moneyking.com:9100']
-
-  - job_name: 'wordpress'
-    metrics_path: '/wp-json/metrics/v1/prometheus'
-    static_configs:
       - targets:
-          - 'rankzilla.com'
-          - 'simplemom.net'
-          - 'sundaybestdesigns.com'
-          - 'webalivedesigns.com'
-          - 'socialcrawlytics.com'
-          - 'webmarketing123.com'
-          - 'moneyking.com'
+          - 'rankzilla.com:9100'
+          - 'simplemom.net:9100'
+          - 'sundaybestdesigns.com:9100'
+          - 'webalivedesigns.com:9100'
+          - 'socialcrawlytics.com:9100'
+          - 'webmarketing123.com:9100'
+          - 'moneyking.com:9100'
