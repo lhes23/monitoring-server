@@ -2,6 +2,7 @@
 
 # Update system packages
 echo "Updating system packages..."
+export DEBIAN_FRONTEND=noninteractive
 sudo apt update -y && sudo apt upgrade -y
 
 # Install Docker
