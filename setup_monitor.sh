@@ -54,11 +54,11 @@ echo "Access Prometheus at http://${PUBLIC_IP}:9090"
 
 # Prompt user to run Ansible playbook manually
 echo "Copy the .pem file to the ~/.ssh directory"
-echo "scp -i ~/.ssh/ec2-users-key-us-east.pem ~/.ssh/ec2-users-key-us-east.pem ubuntu@${PUBLIC_IP}:~/.ssh/ec2-users-key-us-east.pem ."
+echo "scp -i ~/.ssh/ec2-users-key-us-east.pem ~/.ssh/ec2-users-key-us-east.pem ubuntu@${PUBLIC_IP}:~/.ssh/."
 echo "To install playbook, run: ansible-playbook -i ~/monitoring-server/ansible/inventory.ini ~/monitoring-server/playbook.yml"
 
 
 cat <<EOF > ./run_command.txt
-scp -i ~/.ssh/ec2-users-key-us-east.pem ~/.ssh/ec2-users-key-us-east.pem ubuntu@${PUBLIC_IP}:~/.ssh/ec2-users-key-us-east.pem .
+scp -i ~/.ssh/ec2-users-key-us-east.pem ~/.ssh/ec2-users-key-us-east.pem ubuntu@${PUBLIC_IP}:~/.ssh/.
 ansible-playbook -i ~/monitoring-server/ansible/inventory.ini ~/monitoring-server/playbook.yml
 EOF
