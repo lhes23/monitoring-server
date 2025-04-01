@@ -21,7 +21,9 @@ EONG
 
 # Install Ansible
 echo "Installing Ansible..."
-sudo apt install -y ansible
+sudo apt remove --purge ansible -y
+sudo apt update && sudo apt install -y python3-pip
+pip3 install ansible
 
 # Download Prometheus
 PROM_VERSION="2.51.2"
