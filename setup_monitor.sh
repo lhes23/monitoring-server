@@ -60,5 +60,5 @@ echo "To install playbook, run: ansible-playbook -i ~/monitoring-server/ansible/
 
 cat <<EOF > ./run_command.txt
 scp -i ~/.ssh/ec2-users-key-us-east.pem ~/.ssh/ec2-users-key-us-east.pem ubuntu@${PUBLIC_IP}:~/.ssh/.
-ansible-playbook -i ~/monitoring-server/ansible/inventory.ini ~/monitoring-server/playbook.yml
+ansible-playbook -i ~/monitoring-server/ansible/inventory.ini ~/monitoring-server/ansible/playbook.yml
 EOF
