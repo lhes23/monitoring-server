@@ -11,3 +11,15 @@ scrape_configs:
       - targets: ['socialcrawlytics.com:9100']
       - targets: ['webmarketing123.com:9100']
       - targets: ['moneyking.com:9100']
+
+  - job_name: 'wordpress'
+    metrics_path: '/wp-json/metrics/v1/prometheus'
+    static_configs:
+      - targets:
+          - 'rankzilla.com'
+          - 'simplemom.net'
+          - 'sundaybestdesigns.com'
+          - 'webalivedesigns.com'
+          - 'socialcrawlytics.com'
+          - 'webmarketing123.com'
+          - 'moneyking.com'
