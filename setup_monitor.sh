@@ -45,7 +45,7 @@ sudo docker run -d --name=grafana \
   grafana/grafana
 
 
-PUBLIC_IP=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
+PUBLIC_IP=$(curl -s http://icanhazip.com)
 
 echo "Installation complete!"
 echo "Access Grafana at http://${PUBLIC_IP}:3000"
