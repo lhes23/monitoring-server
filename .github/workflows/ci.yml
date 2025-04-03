@@ -17,6 +17,10 @@ jobs:
           cd /home/ubuntu/monitoring-server
           git pull origin main
 
+      - name: Run Ansible Playbook
+        run: |
+          ansible-playbook -i /home/ubuntu/monitoring-server/ansible/inventory.ini /home/ubuntu/monitoring-server/ansible/playbook.yml
+
       - name: Restart Prometheus Container
         run: |
           docker restart prometheus
