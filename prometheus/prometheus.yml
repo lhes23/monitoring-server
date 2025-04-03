@@ -12,3 +12,4 @@ scrape_configs:
           - 'socialcrawlytics.com:9100'
           - 'webmarketing123.com:9100'
           - 'moneyking.com:9100'
+          - 'ippeileads.com:9100'
