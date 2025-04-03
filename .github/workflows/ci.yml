@@ -1,0 +1,22 @@
+name: Auto Git Pull and Restart Prometheus
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Git Pull Latest Changes
+        run: |
+          cd /home/ubuntu/monitoring-server
+          git pull origin main
+
+      - name: Restart Prometheus Container
+        run: |
+          docker restart prometheus
