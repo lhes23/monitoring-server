@@ -5,11 +5,11 @@ scrape_configs:
   - job_name: 'node_exporter'
     static_configs:
       - targets:
-          - 'rankzilla.com:9100'
-          - 'simplemom.net:9100'
-          - 'sundaybestdesigns.com:9100'
-          - 'webalivedesigns.com:9100'
-          - 'socialcrawlytics.com:9100'
-          - 'webmarketing123.com:9100'
+          - '172.31.90.179:9100'
+          - '172.31.47.238:9100'
+          - '172.31.1.243:9100'
+          - '172.31.31.111:9100'
+          - '172.31.35.192:9100'
+          - '172.31.9.197:9100'
           - '172.31.91.50:9100'
-          - 'ippeileads.com:9100'
+          - '172.31.14.232:9100'
