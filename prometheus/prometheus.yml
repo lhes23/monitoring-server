@@ -11,5 +11,5 @@ scrape_configs:
           - 'webalivedesigns.com:9100'
           - 'socialcrawlytics.com:9100'
           - 'webmarketing123.com:9100'
-          - 'moneyking.com:9100'
+          - '172.31.91.50:9100'
           - 'ippeileads.com:9100'
